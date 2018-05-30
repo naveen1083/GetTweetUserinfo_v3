@@ -1,13 +1,27 @@
 # -*- coding: utf-8 -*-
 import scrapy
+import pkgutil
+from scrapy.spiders import Rule
+from scrapy.linkextractors import LinkExtractor
 
+data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
 
 class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
-    start_urls = [
-        'https://twitter.com/GeertReyniers',
+    with open(data, encoding='utf-8') as f:
+        start_urls = [url.strip() for url in f.readlines()]
+    
+    rules = [
+        Rule(
+            LinkExtractor(
+                allow=(),
+                deny=('.*')
+            ),
+            callback='parse_item',
+            follow=True
+        )
     ]
-
+    
     def parse(self, response):
         User = response.xpath("//div[@class='ProfileHeaderCard']")
         yield {

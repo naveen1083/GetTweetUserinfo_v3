@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import pkgutil
-from scrapy.spiders import Rule
-from scrapy.linkextractors import LinkExtractor
+# from scrapy.spiders import Rule
+# from scrapy.linkextractors import LinkExtractor
 
 
 
@@ -12,17 +12,7 @@ class ToScrapeSpiderXPath(scrapy.Spider):
     start_urls = (data.decode('utf-8')).split(',\n')
          
     
-    rules = [
-        Rule(
-            LinkExtractor(
-                allow=(),
-                deny=('.*')
-            ),
-            callback='parse_item',
-            follow=True
-        )
-    ]
-    
+   
     def parse(self, response):
         User = response.xpath("//div[@class='ProfileHeaderCard']")
         yield {

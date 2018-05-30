@@ -9,7 +9,7 @@ class ToScrapeSpiderXPath(scrapy.Spider):
     ]
 
     def parse(self, response):
-        User = response.xpath("//div[@class='ProfileHeaderCard']
+        User = response.xpath("//div[@class='ProfileHeaderCard']")
         yield {
             'Name': User.xpath('.//h1[@class="ProfileHeaderCard-name"]/a/text()').extract_first(),
             'Desc': User.xpath('.//p[@class="ProfileHeaderCard-bio u-dir"]/text()').extract_first(),

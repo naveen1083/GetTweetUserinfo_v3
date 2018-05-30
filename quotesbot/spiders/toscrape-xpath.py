@@ -4,10 +4,11 @@ import pkgutil
 from scrapy.spiders import Rule
 from scrapy.linkextractors import LinkExtractor
 
-data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
+
 
 class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
+    data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
     with open(data, encoding='utf-8') as f:
         start_urls = [url.strip() for url in f.readlines()]
     

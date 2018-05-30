@@ -2,7 +2,9 @@
 import scrapy
 
 
-# class ToScrapeCSSSpider(scrapy.Spider):
+class ToScrapeCSSSpider(scrapy.Spider):
+    
+    pass
 #     name = "toscrape-css"
 #     start_urls = [
 #         'http://quotes.toscrape.com/',

@@ -9,7 +9,7 @@ import pkgutil
 class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
     data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
-    start_urls = (data.decode('utf-8')).split(',\n')
+    start_urls = data.decode('utf-8').split(',\n')
          
     
    

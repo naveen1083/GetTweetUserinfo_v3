@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import pkgutil
-# from scrapy.spiders import Rule
-# from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import Rule
+from scrapy.linkextractors import LinkExtractor
 
 
 

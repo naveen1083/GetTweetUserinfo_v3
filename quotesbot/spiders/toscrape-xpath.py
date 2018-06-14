@@ -5,7 +5,7 @@ import pkgutil
 
 class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
-    data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
+    
     
 #     def start_requests(self):
 #         for link in data.decode('utf-8').split('\n'):
@@ -18,7 +18,7 @@ class ToScrapeSpiderXPath(scrapy.Spider):
     
     def getUrls(self):
         addurls = []
-#         data = pkgutil.get_data("tutorial", "resources/clinks17.txt")
+        data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
         addurls = (data.decode('utf-8')).split('\n')
         self.log(len(addurls))
         url = [x.strip() for x in addurls]

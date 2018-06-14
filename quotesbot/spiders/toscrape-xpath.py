@@ -2,15 +2,14 @@
 import scrapy
 import pkgutil
 
-
+data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
 class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
     
     def start_requests(self):
-        data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
         with open(data, 'r', encoding='utf-8') as f:
             for line in f.readlines():
-                link = line.split(',')[0]
+                url = line.split(',')[0]
                 yield scrapy.Request(url=url, callback=self.parse)
 
          

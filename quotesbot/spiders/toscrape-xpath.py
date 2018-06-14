@@ -2,9 +2,10 @@
 import scrapy
 import pkgutil
 
-data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
+
 class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
+    data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
     
     def start_requests(self):
         with open(data, 'r', encoding='utf-8') as f:

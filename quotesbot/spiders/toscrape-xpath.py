@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import pkgutil
-from scrapy.spiders import Rule
-from scrapy.linkextractors import LinkExtractor
+# from scrapy.spiders import Rule
+# from scrapy.linkextractors import LinkExtractor
 
 
 
 class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
     data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
-    start_urls = []
     with open(data, 'r', encoding='utf-8') as f:
          for line in f.readlines():
             link = line.split(',')[0]
-            start_urls.append(link)
+            yield scrapy.Request(url=url, callback=self.parse)
 
          
     

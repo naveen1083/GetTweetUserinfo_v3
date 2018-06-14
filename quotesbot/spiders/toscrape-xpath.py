@@ -32,8 +32,9 @@ class ToScrapeSpiderXPath(scrapy.Spider):
    
     def parse(self, response):
         User = response.xpath("//div[@class='ProfileHeaderCard']")
+        uurl = 'https://twitter.com'+User.xpath('.//h1[@class="ProfileHeaderCard-name"]/a/@href').extract_first()
         yield {
-            'URL ':User.xpath('.//h1[@class="ProfileHeaderCard-name"]/a/@href').extract_first(),
+            'URL ':uurl,
             'Name': User.xpath('.//h1[@class="ProfileHeaderCard-name"]/a/text()').extract_first(),
             'Desc': User.xpath('.//p[@class="ProfileHeaderCard-bio u-dir"]/text()').extract_first(),
 

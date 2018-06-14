@@ -8,7 +8,7 @@ class ToScrapeSpiderXPath(scrapy.Spider):
 
     
     def start_requests(self):
-        data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
+        data = pkgutil.get_data("quotesbot", "resources/UserLinks_FF.txt")
         for link in data.decode('utf-8').split('\n'):
             link = link.replace(',','').strip()
             self.log(link)

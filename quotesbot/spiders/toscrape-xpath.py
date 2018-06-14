@@ -9,8 +9,9 @@ from scrapy.linkextractors import LinkExtractor
 class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
     data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
+    
     with open(data, 'r', encoding='utf-8') as f:
-        start_urls = [line.split(',')[0] for lines in f.readlines()]
+        start_urls = [line.split(',')[0] for line in f.readlines()]
 
          
     

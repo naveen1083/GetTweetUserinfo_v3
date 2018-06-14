@@ -7,10 +7,23 @@ class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
     data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
     
+#     def start_requests(self):
+#         for link in data.decode('utf-8').split('\n'):
+#             yield scrapy.Request(url=link, callback=self.parse)
     def start_requests(self):
-        for link in data.decode('utf-8').split('\n'):
-            yield scrapy.Request(url=link, callback=self.parse)
-            
+        urls = self.getUrls()
+        self.log(urls)
+        for url in urls:
+            yield scrapy.Request(url=url, callback=self.parse)
+    
+    def getUrls(self):
+        addurls = []
+#         data = pkgutil.get_data("tutorial", "resources/clinks17.txt")
+        addurls = (data.decode('utf-8')).split('\n')
+        self.log(len(addurls))
+        url = [x.strip() for x in addurls]
+        self.log('Total urls:'+str(len(url)))
+        return url[0:10]            
         
     
    

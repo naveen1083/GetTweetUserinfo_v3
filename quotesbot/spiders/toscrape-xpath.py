@@ -8,10 +8,13 @@ class ToScrapeSpiderXPath(scrapy.Spider):
     data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
     
     def start_requests(self):
-        with open(data) as f:
-            for line in f.readlines():
-                url = line.split(',')[0]
-                yield scrapy.Request(url=url, callback=self.parse)
+        for link in data.decode('utf-8').split(',\n'):
+            yield scrapy.Request(url=link, callback=self.parse)
+            
+#         with open(data) as f:
+#             for line in f.readlines():
+#                 url = line.split(',')[0]
+#                 yield scrapy.Request(url=url, callback=self.parse)
 
          
     

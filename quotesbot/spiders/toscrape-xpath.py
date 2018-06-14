@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import pkgutil
-# from scrapy.spiders import Rule
-# from scrapy.linkextractors import LinkExtractor
-
 
 
 class ToScrapeSpiderXPath(scrapy.Spider):
     name = 'toscrape-xpath'
-    data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
-    with open(data, 'r', encoding='utf-8') as f:
-         for line in f.readlines():
-            link = line.split(',')[0]
-            yield scrapy.Request(url=url, callback=self.parse)
+    
+    def start_requests(self):
+        data = pkgutil.get_data("quotesbot", "resources/Userlist_links_.txt")
+        with open(data, 'r', encoding='utf-8') as f:
+            for line in f.readlines():
+                link = line.split(',')[0]
+                yield scrapy.Request(url=url, callback=self.parse)
 
          
     
@@ -26,7 +25,4 @@ class ToScrapeSpiderXPath(scrapy.Spider):
 
         }
 
-#         next_page_url = response.xpath('//li[@class="next"]/a/@href').extract_first()
-#         if next_page_url is not None:
-#             yield scrapy.Request(response.urljoin(next_page_url))
 
